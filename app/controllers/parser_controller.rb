@@ -6,9 +6,17 @@ class ParserController < ApplicationController
     tl_parser = TrueLogicParser.new(params[:file_for], params[:file].path)
     @parsed_data = tl_parser.parse
 
-    calculate_temperature_infos
+    if @parsed_data[:error]
+      return render(partial: "parsing_error", status: :bad_request)
+    end
 
-    render(partial: "weather_data", status: :ok)
+    if params[:file_for] == 'weather'
+      calculate_temperature_infos
+      render(partial: "weather_data", status: :ok)
+    elsif params[:file_for] == 'soccer'
+      calculate_premier_infos
+      render(partial: "soccer_data", status: :ok)
+    end
   end
 
   private
@@ -22,5 +30,10 @@ class ParserController < ApplicationController
   end
 
   def calculate_premier_infos
+    @min_team_spread = @parsed_data[:results].map { |r| [ r["Team"], (r["F"].to_i - r["A"].to_i).abs ] }
+                                             .min_by { |d| d[1] }
+
+    @max_team_spread = @parsed_data[:results].map { |r| [ r["Team"], (r["F"].to_i - r["A"].to_i).abs ] }
+                                             .max_by { |d| d[1] }
   end
 end

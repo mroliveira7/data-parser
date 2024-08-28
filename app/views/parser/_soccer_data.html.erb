@@ -1,7 +1,6 @@
 <turbo-frame id="import-response">
   <div class="temperature-infos">
-    <div><b>Smallest Temperature Spread:</b> Day <%= @min_temp_spread[0] %> - Spread: <%= @min_temp_spread[1] %></div>
-    <div><b>Greatest Temperature Spread:</b> Day <%= @max_temp_spread[0] %> - Spread: <%= @max_temp_spread[1] %></div>
+    <div><b>Smallest diff in goals (F - A):</b> <%= @min_team_spread[0] %> - Diff: <%= @min_team_spread[1] %></div>
   </div>
 
   <h3>Imported table:</h3>
@@ -13,7 +12,7 @@
     </thead>
     <tbody>
       <% @parsed_data[:results].each do |result| %>
-        <tr class="<%= 'coldest-spread-day' if result['Dy'] == @min_temp_spread[0] %> <%= 'warmest-spread-day' if result['Dy'] == @max_temp_spread[0] %>">
+        <tr class="<%= 'coldest-spread-day' if result['Team'] == @min_team_spread[0] %>">
           <% result.each do |_, value| %>
             <td><%= value %></td>
           <% end %>

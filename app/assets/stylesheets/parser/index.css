@@ -8,7 +8,7 @@
 
 .form {
   margin-top: 30px;
-  width: 350px;
+  width: 400px;
 
   form {
     .form-field {
@@ -58,6 +58,9 @@
 
 .warmest-spread-day {
   border: 2px solid coral;
+}
+.error-color {
+  color: darkred;
 }
 
 table {
