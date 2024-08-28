@@ -34,7 +34,7 @@ class WeatherParser
 
     results = lines[FIRST_LINE..LAST_LINE].map { |line| line_to_hash(line) }
 
-    { total: results.size, error: false, results: results }
+    { total: results.size, error: false, results: results, columns: @columns }
   end
 
   def line_to_hash(str)

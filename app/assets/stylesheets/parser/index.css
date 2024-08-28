@@ -8,7 +8,7 @@
 
 .form {
   margin-top: 30px;
-  width: 325px;
+  width: 350px;
 
   form {
     .form-field {
@@ -40,5 +40,54 @@
     border-radius: 16px;
     color: white;
     background-color: cadetblue;
+    cursor: pointer;
   }
+
+  input[type="submit"]:hover {
+    background-color: #4b7f81;
+  }
+}
+
+.temperature-infos {
+  margin-bottom: 20px;
+}
+
+.coldest-spread-day {
+  border: 2px solid cornflowerblue;
+}
+
+.warmest-spread-day {
+  border: 2px solid coral;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+thead th {
+  background-color: cadetblue;
+  color: white;
+  text-align: left;
+  padding: 10px;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+tbody td {
+  padding: 10px;
+  border-bottom: 1px solid white;
+  text-align: left;
+  font-size: 13px;
+}
+
+tfoot td {
+  padding: 10px;
+  background-color: cadetblue;
+  color: white;
+  text-align: left;
 }

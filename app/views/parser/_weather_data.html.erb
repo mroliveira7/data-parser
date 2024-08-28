@@ -1,5 +1,24 @@
 <turbo-frame id="testing">
-  <div>
-    <%= @parsed_data.inspect %>
+  <div class="temperature-infos">
+    <b>Smallest Temperature Spread:</b> Day <%= @min_temp_spread[0] %> - Spread: <%= @min_temp_spread[1] %>
+    <b>Greatest Temperature Spread:</b> Day <%= @max_temp_spread[0] %> - Spread: <%= @max_temp_spread[1] %>
   </div>
+
+  <h3>Imported table:</h3>
+  <table>
+    <thead>
+      <% @parsed_data[:columns].each do |column_name| %>
+        <th><%= column_name %></th>
+      <% end %>
+    </thead>
+    <tbody>
+      <% @parsed_data[:results].each do |result| %>
+        <tr class="<%= 'coldest-spread-day' if result['Dy'] == @min_temp_spread[0] %> <%= 'warmest-spread-day' if result['Dy'] == @max_temp_spread[0] %>">
+          <% result.each do |_, value| %>
+            <td><%= value %></td>
+          <% end %>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
 </turbo-frame>
