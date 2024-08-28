@@ -11,4 +11,6 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   root "parser#index"
+
+  post "parser/import", to: "parser#import", as: "parser_import"
 end

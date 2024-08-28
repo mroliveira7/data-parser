@@ -1,0 +1,24 @@
+<div class="page-content">
+  <div class="headers">
+    <h1 class="title">Parse your data here!</h1>
+  </div>
+  <div class="descriptive-text">Use the form below to parse the Weather data or the Soccer data</div>
+
+  <div class="form">
+    <%= form_with url: parser_import_url, method: :post, multipart: true do |form| %>
+      <div>
+      <%= form.select :file_for, [["Weather", "weather"], ["Soccer", "soccer"]], required: true %>
+      </div>
+      <div>
+        <%= form.file_field :file, required: true %>
+      </div>
+      <div>
+        <%= form.submit "Send" %>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="results">
+    <%= @parsed_data.inspect %>
+  </div>
+</div>
