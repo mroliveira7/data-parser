@@ -1,0 +1,44 @@
+.margin-top-10 {
+  margin-top: 10px;
+}
+
+.descriptive-text {
+  font-size: 18px;
+}
+
+.form {
+  margin-top: 30px;
+  width: 325px;
+
+  form {
+    .form-field {
+      margin-top: 16px;
+      display: flex;
+      flex-direction: column;
+    }
+  }
+
+  label {
+    padding-left: 8px;
+    color:rgb(45, 46, 44);
+    margin-bottom: 4px;
+  }
+
+  select {
+    height: 32px;
+    border-radius: 8px;
+    background-color: white;
+  }
+
+  input[type="file"] {
+    padding: 6px;
+  }
+
+  input[type="submit"] {
+    height: 24px;
+    border: 1px solid grey;
+    border-radius: 16px;
+    color: white;
+    background-color: cadetblue;
+  }
+}

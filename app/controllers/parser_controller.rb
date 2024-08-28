@@ -3,10 +3,9 @@ class ParserController < ApplicationController
   end
 
   def import
-    data = TrueLogicParser.new(params[:file_for], params[:file].path)
-    @parsed_data = data.parse
-    logger.debug(@parsed_data)
+    tl_parser = TrueLogicParser.new(params[:file_for], params[:file].path)
+    @parsed_data = tl_parser.parse
 
-    redirect_to(action: "index")
+    render(partial: "weather_data", status: :ok)
   end
 end

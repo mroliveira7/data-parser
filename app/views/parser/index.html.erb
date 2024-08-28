@@ -1,24 +1,31 @@
 <div class="page-content">
   <div class="headers">
-    <h1 class="title">Parse your data here!</h1>
+    <h1 class="title">TrueLogic Challenge</h1>
   </div>
   <div class="descriptive-text">Use the form below to parse the Weather data or the Soccer data</div>
-
-  <div class="form">
-    <%= form_with url: parser_import_url, method: :post, multipart: true do |form| %>
-      <div>
-      <%= form.select :file_for, [["Weather", "weather"], ["Soccer", "soccer"]], required: true %>
-      </div>
-      <div>
-        <%= form.file_field :file, required: true %>
-      </div>
-      <div>
-        <%= form.submit "Send" %>
-      </div>
-    <% end %>
+  <div class="descriptive-text margin-top-10">
+    Usage: The form below receives a file that should contain data provided by TrueLogic. This data includes two types of data: Daily weather data and data from
+    the English premier league.
+    It will not work with unexpected data.
   </div>
+  <div class="descriptive-text">This application acts as a parser. It should parse the file, show the informations requested by TrueLogic and show the complete uploaded table.</div>
 
-  <div class="results">
-    <%= @parsed_data.inspect %>
+
+  <div class="form margin-top-10">
+    <turbo-frame id="testing">
+      <%= form_with url: parser_import_url, method: :post, multipart: true do |form| %>
+        <div class="form-field">
+          <%= form.label "Select the content of the data" %>
+          <%= form.select :file_for, [["Weather", "weather"], ["Soccer", "soccer"]], required: true %>
+        </div>
+        <div class="form-field">
+          <%= form.label "Select the correct file for the data" %>
+          <%= form.file_field :file, required: true %>
+        </div>
+        <div class="form-field">
+          <%= form.submit "Send" %>
+        </div>
+      <% end %>
+    </turbo-frame>
   </div>
 </div>
