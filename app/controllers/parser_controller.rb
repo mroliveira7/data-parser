@@ -10,12 +10,15 @@ class ParserController < ApplicationController
       return render(partial: "parsing_error", status: :bad_request)
     end
 
-    if params[:file_for] == 'weather'
+    case params[:file_for]
+    when 'weather'
       calculate_temperature_infos
       render(partial: "weather_data", status: :ok)
-    elsif params[:file_for] == 'soccer'
+    when 'soccer'
       calculate_premier_infos
       render(partial: "soccer_data", status: :ok)
+    else
+      render(partial: "parsing_error", status: :bad_request)
     end
   end
 
